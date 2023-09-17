@@ -6,7 +6,6 @@ from tkinter import *
 
 from PIL import ImageTk, Image
 from pygame import mixer
-
 from threading import *
 
 #Parent window
@@ -115,7 +114,7 @@ secBox['values'] = ("00", "01", "02", "03", "04",
 secBox.current(0)
 secBox.place(x=279, y=80)
 
-#For the hour settings
+#For the period settings
 per = Label(frameBody, 
             text = "Period", 
             height= 1, 
@@ -130,19 +129,20 @@ perBox.current(0)
 perBox.place(x=363, y=80)
 
 
-
+#function to activate the alarm
 def activate_alarm():
     print("Alarm has been activated!")
     trigger = Thread(target=alarm)
     trigger.start() 
 
+#function to deactivate the alarm
 def deactivate_alarm():
     print("Alarm has been deactivated!")
     mixer.music.stop()
 
 selected = IntVar()
 
-#activate and deactivate buttons
+#activate button
 activate = Radiobutton(frameBody, 
                        font=('arial 14 bold'), 
                        value=1, 
@@ -152,12 +152,13 @@ activate = Radiobutton(frameBody,
                        variable=selected)
 activate.place(x=140, y=135)
 
-
+#function to load the alarm sound into the code
 def soundAlarm():
     mixer.music.load('Alarm_clock/Alarm_sound.mp3')
     mixer.music.play()
     selected.set(0)
 
+    #creating the deactivate button
     deactivate = Radiobutton(frameBody, 
                              font=('arial 14 bold'), 
                              value=2, 
@@ -167,23 +168,25 @@ def soundAlarm():
                              variable=selected)
     deactivate.place(x=250, y=135)
 
+#function to configure the alarm setting(Main part of the code)
 def alarm():
     while True:
         control = 1
         print(control)
-        #user time settings
+
+        #getting the user time settings
         alarmHour = hourBox.get()
         alarmMin = minBox.get()
         alarmSec = secBox.get()
         alarmPeriod = perBox.get()
 
-        #current time
+        #getting the current time
         now = datetime.now()
         c_hour = now.strftime("%I")
         c_minute = now.strftime("%M")
         c_second = now.strftime("%S")
         c_period = now.strftime("%p")
-        print(c_hour,c_minute,c_second,c_period)
+        print("Current time: ",c_hour,c_minute,c_second,c_period)
 
         if control == 1:
             if alarmPeriod == c_period:
