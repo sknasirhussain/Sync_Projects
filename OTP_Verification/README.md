@@ -44,7 +44,7 @@ Before running the script, you need to have the following prerequisites:
 2. Run the script:
 
    ```shell
-   python otp_sender.py
+   python main.py
    ```
 
 3. You will be prompted to enter the recipient's email address.
