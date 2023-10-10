@@ -65,9 +65,6 @@ This repository contains a collection of projects that cover various domains and
 
 To get started with any of the projects, navigate to the respective project folder and follow the instructions provided in their individual README files.
 
-## License
-
-This repository is open-source and available under the [MIT License](LICENSE). You are free to use, modify, and distribute the code as per the terms of the license.
 
 ## Issues and Contributions
 
